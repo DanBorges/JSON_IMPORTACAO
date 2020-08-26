@@ -1,0 +1,524 @@
+{
+    "ambientes": [
+        {
+            "nome": "pje",
+            "usuario": "postgres",
+            "senha": "postgres",
+            "host": "10.0.60.51",
+            "port": "7437",
+            "baseDados": "pje"
+        },
+		{
+            "nome": "PJeSup",
+            "usuario": "pjeadmin",
+            "senha": "pj3adm1n-TJMG",
+            "host": "10.0.100.30",
+            "port": "5432",
+            "baseDados": "pje"
+		},
+		{
+            "nome": "pje-container",
+            "usuario": "postgres",
+            "senha": "postgres",
+            "host": "10.0.60.51",
+            "port": "3333",
+            "baseDados": "pje"
+        },
+		{
+            "nome": "PJeSup(CNJ)",
+            "usuario": "pjeadmin",
+            "senha": "pj3adm1n-TJMG",
+            "host": "10.0.100.38",
+            "port": "5432",
+            "baseDados": "pje"
+        }
+    ],
+	"nivel-maximo-por-tabela":"4",
+	"tabelas-sincronizar": 
+	[	
+		{
+			"nome": "public.jbpm_processdefinition",
+			"pk": "id_",
+			"ignorar-campos":"startstate_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},
+		{
+			"nome": "public.jbpm_node",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},
+		{
+			"nome": "public.jbpm_processdefinition",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},
+		{
+			"nome": "jbpm_moduledefinition",
+			"pk": "id_",
+			"ignorar-campos":"starttask_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},
+		{
+			"nome": "public.jbpm_swimlane",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},
+		{
+			"nome": "public.jbpm_taskcontroller",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes"
+		},
+		{
+			"nome": "public.jbpm_task",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},	
+		{
+			"nome": "jbpm_moduledefinition",
+			"pk": "id_",
+			"ignorar-campos":"",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},		
+		{
+			"nome": "public.jbpm_transition",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},
+		{
+			"nome": "public.jbpm_event",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		},	
+		{
+			"nome": "public.jbpm_action",
+			"pk": "id_",
+			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+		}	
+	],
+    "pre-condicoes": [
+        
+    ],
+    "pos-condicoes": [
+  
+    ],
+    "tabelas": [
+        {
+            "nome": "client.tb_processo_trf",
+            "pk": "id_processo_trf",
+            "dependencias": 
+			[
+                {
+                    "nome": "core.tb_processo",
+					"pk": "id_processo",
+                    "coluna": "id_processo",
+					"coluna-dependente":"id_processo_trf",
+					"ignorar-campos":"",
+					"recursivo-id":"",
+					"dependencias": [
+						{
+							"nome": "core.tb_usuario",
+							"pk": "id_usuario",
+							"coluna": "id_usuario",
+							"coluna-dependente":"id_usuario_cadastro_processo",
+							"ignorar-campos":"",
+							"recursivo-id":"",
+							"dependencias": [
+								{
+									"nome": "acl.tb_usuario_login",
+									"pk": "id_usuario",
+									"coluna": "id_usuario",
+									"coluna-dependente":"id_usuario",
+									"ignorar-campos":"",
+									"recursivo-id":"",
+									"dependencias": [],
+									"relacionadas": []
+								}
+							],
+							"relacionadas": []
+						}
+					],
+					"relacionadas": 
+					[
+						{
+							"nome": "core.tb_processo_instance",
+							"pk": "id_processo,id_proc_inst",
+							"coluna": "id_processo",
+							"coluna-dependente":"id_processo",							
+							"dependencias": [],
+							"relacionadas": 
+							[
+
+
+
+								{
+									"nome": "public.jbpm_processinstance",
+									"pk": "id_",
+									"coluna": "id_",
+									"recursivo-id":"core.tb_processo_instance_0001",
+									"coluna-dependente":"id_proc_inst",
+									"ignorar-campos":"superprocesstoken_",
+									"dependencias": [
+										{
+											"nome": "public.jbpm_token",
+											"pk": "id_",
+											"coluna": "id_",
+											"coluna-dependente": "roottoken_",
+											"ignorar-campos":"processinstance_,subprocessinstance_",											
+											"dependencias": [
+												{
+													"nome": "public.jbpm_processinstance",
+													"pk": "id_",
+													"coluna": "id_",
+													"coluna-dependente": "subprocessinstance_",
+													"recursivo-destino":"core.tb_processo_instance_0001"											
+												}
+											],
+											"relacionadas": [
+
+											]
+										},
+									
+									],
+									"relacionadas": 
+									[
+
+										{
+											"nome": "public.jbpm_moduleinstance",
+											"pk": "id_",
+											"coluna": "processinstance_",
+											"ignorar-campos":"",
+											"coluna-dependente":"id_",
+										},
+
+
+										{
+											"nome": "public.jbpm_token",
+											"pk": "id_",
+											"coluna": "id_",
+											"coluna-dependente": "roottoken_",
+											"ignorar-campos":"",
+											"recursivo-id":"",																
+											"dependencias": [
+												{
+													"nome": "public.jbpm_processinstance",
+													"pk": "id_",
+													"coluna": "id_",
+													"ignorar-campos":"",
+													"coluna-dependente":"subprocessinstance_",
+													"dependencias": [],
+													"relacionadas":[]
+												}
+											],
+											"relacionadas": []
+										},
+										{
+											"nome": "public.jbpm_variableinstance",
+											"pk": "id_",
+											"coluna": "processinstance_",
+											"ignorar-campos":"",
+											"coluna-dependente": "id_",
+											"dependencias": [
+												{
+													"nome": "public.jbpm_tokenvariablemap",
+													"pk": "id_",
+													"coluna": "id_",
+													"coluna-dependente": "tokenvariablemap_",
+													"recursivo-destino":""											
+												}
+											]
+										},
+									]
+								},
+								{
+									"nome": "public.jbpm_taskinstance",
+									"pk": "id_",
+									"coluna": "procinst_",
+									"ignorar-campos":"",
+									"coluna-dependente":"id_proc_inst",
+									"dependencias": [
+										{
+											"nome": "public.jbpm_swimlaneinstance",
+											"pk": "id_",
+											"coluna": "id_",
+											"ignorar-campos":"",
+											"coluna-dependente":"swimlaninstance_",
+
+											"relacionadas":[]
+										},
+										{
+											"nome": "public.jbpm_token",
+											"pk": "id_",
+											"coluna": "id_",
+											"coluna-dependente": "token_",
+											"ignorar-campos":"",
+											"recursivo-id":""
+										}
+									],
+									"relacionadas":[
+
+									]
+								},
+
+
+							]
+						},
+					]
+                },
+				{
+					"nome": "core.tb_localizacao",					
+                    "coluna": "id_localizacao",
+					"pk": "id_localizacao",
+					"coluna-dependente":"id_localizacao_inicial",
+					"ignorar-campos":"",
+					"dependencias": [
+						{
+							"nome": "core.tb_endereco",					
+							"coluna": "id_endereco",
+							"pk": "id_endereco",
+							"coluna-dependente":"id_endereco",
+							"ignorar-campos":"",
+						}
+					]
+				},
+				
+
+
+            ],
+            "relacionadas": 
+			[
+                {
+					"nome": "client.tb_processo_tarefa",
+					"coluna": "id_processo_trf",
+					"coluna-dependente":"id_processo_trf",
+					"pk": "id_processo_tarefa"
+				},
+
+				{
+					"nome": "client.tb_cabecalho_processo",
+					"coluna": "id_processo_trf",
+					"coluna-dependente":"id_processo_trf",
+					"pk": "id_processo_trf"
+				},
+
+
+				{
+					"nome": "core.tb_proc_localizacao_ibpm",
+					"coluna": "id_processo",
+					"coluna-dependente":"id_processo_trf",
+					"pk": "id_processo_localizacao"
+				},
+
+				{
+					"nome": "core.tb_processo_evento",
+					"coluna": "id_processo",
+					"coluna-dependente":"id_processo_trf",
+					"pk": "id_processo_evento"
+				},
+
+
+				{
+					"nome": "client.tb_processo_assunto",
+					"coluna": "id_processo_trf",
+					"coluna-dependente":"id_processo_trf",
+					"pk": "id_processo_assunto"
+				},	
+				{
+                    "nome": "client.tb_processo_parte",
+                    "coluna": "id_processo_trf",
+					"pk": "id_processo_parte",
+					"ignorar-campos":"",
+					"recursivo-id":"client.tb_processo_parte_0001",
+					"dependencias":[
+						
+						{
+							"nome": "acl.tb_ususario_login",
+							"coluna": "id_usuario",
+							"coluna-dependente":"id_usuario",
+							"pk": "id_usuario"
+						},
+
+						{
+							"nome": "core.tb_ususario",
+							"coluna": "id_usuario",
+							"coluna-dependente":"id_usuario",
+							"pk": "id_usuario"
+						},
+
+						{
+							"nome": "client.tb_pessoa",
+							"coluna": "id_pessoa",
+							"coluna-dependente":"id_pessoa",
+							"pk": "id_pessoa"
+						},
+
+						{
+							"nome": "client.tb_pessoa_fisica",
+							"coluna": "id_pessoa_fisica",
+							"coluna-dependente":"id_pessoa",
+							"pk": "id_pessoa_fisica"
+						},
+
+						{
+							"nome": "client.tb_pessoa_juridica",
+							"coluna": "id_pessoa_juridica",
+							"coluna-dependente":"id_pessoa",
+							"pk": "id_pessoa_juridica"
+						},
+
+						{
+							"nome": "client.tb_pessoa_advogado",
+							"coluna": "id",
+							"coluna-dependente":"id_pessoa",
+							"pk": "id"
+						},
+
+
+						
+
+					],
+					"relacionadas" : [
+						{
+							"nome": "client.tb_processo_parte_endereco",
+							"coluna": "id_processo_parte",
+							"coluna-dependente":"id_processo_parte",
+							"pk": "id_processo_parte_endereco",
+							"dependencias":[
+								{
+									"nome": "core.tb_endereco",
+									"coluna": "id_endereco",
+									"coluna-dependente":"id_endereco",
+									"pk": "id_endereco",
+									"ignorar-campos":"",
+								}
+							]
+						},
+
+						{
+							"nome": "client.tb_proc_parte_represntante",
+							"coluna": "id_processo_parte",
+							"coluna-dependente":"id_processo_parte",
+							"pk": "id_proc_parte_representante",
+							
+							"dependencias":[
+	
+								{
+									"nome": "acl.tb_ususario_login",
+									"coluna": "id_usuario",
+									"coluna-dependente":"id_usuario",
+									"pk": "id_usuario"
+								},
+		
+								{
+									"nome": "core.tb_ususario",
+									"coluna": "id_usuario",
+									"coluna-dependente":"id_usuario",
+									"pk": "id_usuario"
+								},
+		
+								{
+									"nome": "client.tb_pessoa",
+									"coluna": "id_pessoa",
+									"coluna-dependente":"id_pessoa",
+									"pk": "id_pessoa"
+								},
+		
+								{
+									"nome": "client.tb_pessoa_fisica",
+									"coluna": "id_pessoa_fisica",
+									"coluna-dependente":"id_pessoa",
+									"pk": "id_pessoa_fisica"
+								},
+		
+								{
+									"nome": "client.tb_pessoa_juridica",
+									"coluna": "id_pessoa_juridica",
+									"coluna-dependente":"id_pessoa",
+									"pk": "id_pessoa_juridica"
+								},
+		
+								{
+									"nome": "client.tb_pessoa_advogado",
+									"coluna": "id",
+									"coluna-dependente":"id_pessoa",
+									"pk": "id"
+								},
+		
+								{
+									"nome": "client.tb_tipo_parte",
+									"coluna": "id_tipo_representante",
+									"coluna-dependente":"id_tipo_parte",
+									"pk": "id_tipo_parte",
+									"ignorar-campos":"",
+								},
+								{
+									"nome": "client.tb_processo_parte",
+									"coluna": "id_processo_parte",
+									"coluna-dependente":"id_parte_representante",
+									"pk": "id_processo_parte",
+									"ignorar-campos":"",
+									"recursivo-destino":"client.tb_processo_parte_0001"
+									
+
+								},
+							]
+						},
+
+					]
+				},
+
+
+
+
+
+				{
+					"nome": "core.tb_processo_documento",
+					"coluna": "id_processo",
+					"coluna-dependente":"id_processo_trf",
+					"pk": "id_processo_documento",
+					"dependencias": 
+					[						
+						{
+							"nome": "core.tb_processo_documento_bin",
+							"pk": "id_processo_documento_bin",
+							"coluna": "id_processo_documento_bin",
+							"coluna-dependente": "id_processo_documento_bin",
+							"dependencias": [],
+							"relacionadas": 
+							[
+								{
+									"nome": "client.tb_proc_doc_bin_pess_assin",
+									"pk": "id_processo_doc_bin_pessoa",
+									"coluna": "id_processo_documento_bin",
+									"ignorar-campos":""
+								}
+							]
+						},
+						{
+							"nome": "core.tb_processo_documento",
+							"coluna": "id_processo_documento",
+							"coluna-dependente":"id_documento_principal",
+							"pk": "id_processo_documento",
+							"dependencias":[
+								{
+									"nome": "core.tb_processo_documento_bin",
+									"pk": "id_processo_documento_bin",
+									"coluna": "id_processo_documento_bin",
+									"coluna-dependente": "id_processo_documento_bin",
+									"relacionadas": [
+										{
+											"nome": "client.tb_proc_doc_bin_pess_assin",
+											"pk": "id_processo_doc_bin_pessoa",
+											"coluna": "id_processo_documento_bin",
+											"ignorar-campos":"",
+										}
+									]
+								}	
+							]
+						}
+					],
+					"relacionadas": []
+				},
+            ]
+        }
+    ]
+}
