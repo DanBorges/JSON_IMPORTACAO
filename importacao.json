@@ -40,59 +40,59 @@
 			"nome": "public.jbpm_processdefinition",
 			"pk": "id_",
 			"ignorar-campos":"startstate_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},
 		{
 			"nome": "public.jbpm_node",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},
 		{
 			"nome": "public.jbpm_processdefinition",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},
 		{
 			"nome": "jbpm_moduledefinition",
 			"pk": "id_",
 			"ignorar-campos":"starttask_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},
 		{
 			"nome": "public.jbpm_swimlane",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},
 		{
 			"nome": "public.jbpm_taskcontroller",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes"
+			"estrategia-sincronizar":"fonte-todos-registro-destino-criar"
 		},
 		{
 			"nome": "public.jbpm_task",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},	
 		{
 			"nome": "jbpm_moduledefinition",
 			"pk": "id_",
 			"ignorar-campos":"",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},		
 		{
 			"nome": "public.jbpm_transition",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},
 		{
 			"nome": "public.jbpm_event",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		},	
 		{
 			"nome": "public.jbpm_action",
 			"pk": "id_",
-			"estrategia-sincronizar":"criar-registros-nao-existentes-a-partir-ultimo-registro"
+			"estrategia-sincronizar":"fonte-todos-registros-destino-criar-ou-atualizar"
 		}	
 	],
     "pre-condicoes": [
