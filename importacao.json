@@ -147,9 +147,6 @@
 							"dependencias": [],
 							"relacionadas": 
 							[
-
-
-
 								{
 									"nome": "public.jbpm_processinstance",
 									"pk": "id_",
@@ -173,15 +170,11 @@
 													"recursivo-destino":"core.tb_processo_instance_0001"											
 												}
 											],
-											"relacionadas": [
-
-											]
-										},
-									
+											"relacionadas": []
+										}										
 									],
 									"relacionadas": 
 									[
-
 										{
 											"nome": "public.jbpm_moduleinstance",
 											"pk": "id_",
@@ -189,8 +182,6 @@
 											"ignorar-campos":"",
 											"coluna-dependente":"id_",
 										},
-
-
 										{
 											"nome": "public.jbpm_token",
 											"pk": "id_",
@@ -203,7 +194,7 @@
 													"nome": "public.jbpm_processinstance",
 													"pk": "id_",
 													"coluna": "id_",
-													"ignorar-campos":"",
+													"ignorar-campos":"roottoken_",
 													"coluna-dependente":"subprocessinstance_",
 													"dependencias": [],
 													"relacionadas":[]
@@ -224,9 +215,37 @@
 													"coluna": "id_",
 													"coluna-dependente": "tokenvariablemap_",
 													"recursivo-destino":""											
-												}
+												},
+												{
+													"nome": "public.jbpm_taskinstance",
+													"pk": "id_",
+													"coluna": "id_",
+													"coluna-dependente": "taskinstance_",
+													"recursivo-destino":"",
+													"dependencias": [
+														{
+															"nome": "public.jbpm_swimlaneinstance",
+															"pk": "id_",
+															"coluna": "id_",
+															"ignorar-campos":"",
+															"coluna-dependente":"swimlaninstance_",
+															"dependencias": [
+																{
+																	"nome": "public.jbpm_moduleinstance",
+																	"pk": "id_",
+																	"coluna": "id_",
+																	"ignorar-campos":"",
+																	"coluna-dependente":"taskmgmtinstance_",
+																}
+															],
+															"relacionadas":[]
+														},
+													]
+																								
+												},
 											]
 										},
+										
 									]
 								},
 								{
@@ -242,7 +261,15 @@
 											"coluna": "id_",
 											"ignorar-campos":"",
 											"coluna-dependente":"swimlaninstance_",
-
+											"dependencias": [
+												{
+													"nome": "public.jbpm_moduleinstance",
+													"pk": "id_",
+													"coluna": "id_",
+													"ignorar-campos":"",
+													"coluna-dependente":"taskmgmtinstance_",
+												}
+											],
 											"relacionadas":[]
 										},
 										{
@@ -254,12 +281,8 @@
 											"recursivo-id":""
 										}
 									],
-									"relacionadas":[
-
-									]
-								},
-
-
+									"relacionadas":[]
+								}
 							]
 						},
 					]
@@ -279,10 +302,7 @@
 							"ignorar-campos":"",
 						}
 					]
-				},
-				
-
-
+				},						
             ],
             "relacionadas": 
 			[
@@ -465,11 +485,6 @@
 
 					]
 				},
-
-
-
-
-
 				{
 					"nome": "core.tb_processo_documento",
 					"coluna": "id_processo",
