@@ -320,7 +320,6 @@
 					"pk": "id_processo_trf"
 				},
 
-
 				{
 					"nome": "core.tb_proc_localizacao_ibpm",
 					"coluna": "id_processo",
@@ -349,16 +348,16 @@
 					"ignorar-campos":"",
 					"recursivo-id":"client.tb_processo_parte_0001",
 					"dependencias":[
-						
+
 						{
-							"nome": "acl.tb_ususario_login",
+							"nome": "acl.tb_usuario_login",
 							"coluna": "id_usuario",
 							"coluna-dependente":"id_usuario",
 							"pk": "id_usuario"
 						},
 
 						{
-							"nome": "core.tb_ususario",
+							"nome": "core.tb_usuario",
 							"coluna": "id_usuario",
 							"coluna-dependente":"id_usuario",
 							"pk": "id_usuario"
@@ -393,7 +392,7 @@
 						},
 
 
-						
+
 
 					],
 					"relacionadas" : [
@@ -418,51 +417,51 @@
 							"coluna": "id_processo_parte",
 							"coluna-dependente":"id_processo_parte",
 							"pk": "id_proc_parte_representante",
-							
+
 							"dependencias":[
-	
+
 								{
-									"nome": "acl.tb_ususario_login",
+									"nome": "acl.tb_usuario_login",
 									"coluna": "id_usuario",
 									"coluna-dependente":"id_usuario",
 									"pk": "id_usuario"
 								},
-		
+
 								{
-									"nome": "core.tb_ususario",
+									"nome": "core.tb_usuario",
 									"coluna": "id_usuario",
 									"coluna-dependente":"id_usuario",
 									"pk": "id_usuario"
 								},
-		
+
 								{
 									"nome": "client.tb_pessoa",
 									"coluna": "id_pessoa",
 									"coluna-dependente":"id_pessoa",
 									"pk": "id_pessoa"
 								},
-		
+
 								{
 									"nome": "client.tb_pessoa_fisica",
 									"coluna": "id_pessoa_fisica",
 									"coluna-dependente":"id_pessoa",
 									"pk": "id_pessoa_fisica"
 								},
-		
+
 								{
 									"nome": "client.tb_pessoa_juridica",
 									"coluna": "id_pessoa_juridica",
 									"coluna-dependente":"id_pessoa",
 									"pk": "id_pessoa_juridica"
 								},
-		
+
 								{
 									"nome": "client.tb_pessoa_advogado",
 									"coluna": "id",
 									"coluna-dependente":"id_pessoa",
 									"pk": "id"
 								},
-		
+
 								{
 									"nome": "client.tb_tipo_parte",
 									"coluna": "id_tipo_representante",
@@ -477,7 +476,7 @@
 									"pk": "id_processo_parte",
 									"ignorar-campos":"",
 									"recursivo-destino":"client.tb_processo_parte_0001"
-									
+
 
 								},
 							]
