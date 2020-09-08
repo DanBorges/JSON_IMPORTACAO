@@ -239,12 +239,11 @@
 																}
 															],
 															"relacionadas":[]
-														},
-													]
-																								
-												},
+														}
+													]											
+												}
 											]
-										},
+										}
 										
 									]
 								},
@@ -267,7 +266,7 @@
 													"pk": "id_",
 													"coluna": "id_",
 													"ignorar-campos":"",
-													"coluna-dependente":"taskmgmtinstance_",
+													"coluna-dependente":"taskmgmtinstance_"
 												}
 											],
 											"relacionadas":[]
@@ -322,8 +321,8 @@
 
 				{
 					"nome": "core.tb_proc_localizacao_ibpm",
-					"coluna": "id_processo_trf",
-					"coluna-dependente":"id_processo",
+					"coluna": "id_processo",
+					"coluna-dependente":"id_processo_trf",
 					"pk": "id_processo_localizacao"
 				},
 
