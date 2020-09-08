@@ -322,8 +322,8 @@
 
 				{
 					"nome": "core.tb_proc_localizacao_ibpm",
-					"coluna": "id_processo",
-					"coluna-dependente":"id_processo_trf",
+					"coluna": "id_processo_trf",
+					"coluna-dependente":"id_processo",
 					"pk": "id_processo_localizacao"
 				},
 
@@ -352,14 +352,14 @@
 						{
 							"nome": "acl.tb_usuario_login",
 							"coluna": "id_usuario",
-							"coluna-dependente":"id_usuario",
+							"coluna-dependente":"id_pessoa",
 							"pk": "id_usuario"
 						},
 
 						{
 							"nome": "core.tb_usuario",
 							"coluna": "id_usuario",
-							"coluna-dependente":"id_usuario",
+							"coluna-dependente":"id_pessoa",
 							"pk": "id_usuario"
 						},
 
@@ -420,47 +420,8 @@
 
 							"dependencias":[
 
-								{
-									"nome": "acl.tb_usuario_login",
-									"coluna": "id_usuario",
-									"coluna-dependente":"id_usuario",
-									"pk": "id_usuario"
-								},
+                                
 
-								{
-									"nome": "core.tb_usuario",
-									"coluna": "id_usuario",
-									"coluna-dependente":"id_usuario",
-									"pk": "id_usuario"
-								},
-
-								{
-									"nome": "client.tb_pessoa",
-									"coluna": "id_pessoa",
-									"coluna-dependente":"id_pessoa",
-									"pk": "id_pessoa"
-								},
-
-								{
-									"nome": "client.tb_pessoa_fisica",
-									"coluna": "id_pessoa_fisica",
-									"coluna-dependente":"id_pessoa",
-									"pk": "id_pessoa_fisica"
-								},
-
-								{
-									"nome": "client.tb_pessoa_juridica",
-									"coluna": "id_pessoa_juridica",
-									"coluna-dependente":"id_pessoa",
-									"pk": "id_pessoa_juridica"
-								},
-
-								{
-									"nome": "client.tb_pessoa_advogado",
-									"coluna": "id",
-									"coluna-dependente":"id_pessoa",
-									"pk": "id"
-								},
 
 								{
 									"nome": "client.tb_tipo_parte",
@@ -476,9 +437,50 @@
 									"pk": "id_processo_parte",
 									"ignorar-campos":"",
 									"recursivo-destino":"client.tb_processo_parte_0001"
+                                },
 
-
-								},
+                                {
+                                    "nome": "acl.tb_usuario_login",
+                                    "coluna": "id_usuario",
+                                    "coluna-dependente":"id_representante",
+                                    "pk": "id_usuario"
+                                },
+        
+                                {
+                                    "nome": "core.tb_usuario",
+                                    "coluna": "id_usuario",
+                                    "coluna-dependente":"id_representante",
+                                    "pk": "id_usuario"
+                                },
+        
+                                {
+                                    "nome": "client.tb_pessoa",
+                                    "coluna": "id_pessoa",
+                                    "coluna-dependente":"id_representante",
+                                    "pk": "id_pessoa"
+                                },
+        
+                                {
+                                    "nome": "client.tb_pessoa_fisica",
+                                    "coluna": "id_pessoa_fisica",
+                                    "coluna-dependente":"id_representante",
+                                    "pk": "id_pessoa_fisica"
+                                },
+        
+                                {
+                                    "nome": "client.tb_pessoa_juridica",
+                                    "coluna": "id_pessoa_juridica",
+                                    "coluna-dependente":"id_representante",
+                                    "pk": "id_pessoa_juridica"
+                                },
+        
+                                {
+                                    "nome": "client.tb_pessoa_advogado",
+                                    "coluna": "id",
+                                    "coluna-dependente":"id_pessoa",
+                                    "pk": "id"
+                                },
+        
 							]
 						},
 
