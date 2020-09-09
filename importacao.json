@@ -153,13 +153,30 @@
 									"coluna": "id_",
 									"recursivo-id":"core.tb_processo_instance_0001",
 									"coluna-dependente":"id_proc_inst",
-									"ignorar-campos":"superprocesstoken_",
+									"ignorar-campos":"",
 									"dependencias": [
 										{
 											"nome": "public.jbpm_token",
 											"pk": "id_",
 											"coluna": "id_",
 											"coluna-dependente": "roottoken_",
+											"ignorar-campos":"processinstance_,subprocessinstance_",											
+											"dependencias": [
+												{
+													"nome": "public.jbpm_processinstance",
+													"pk": "id_",
+													"coluna": "id_",
+													"coluna-dependente": "subprocessinstance_",
+													"recursivo-destino":"core.tb_processo_instance_0001"											
+												}
+											],
+											"relacionadas": []
+										},
+										{
+											"nome": "public.jbpm_token",
+											"pk": "id_",
+											"coluna": "id_",
+											"coluna-dependente": "superprocesstoken_",
 											"ignorar-campos":"processinstance_,subprocessinstance_",											
 											"dependencias": [
 												{
@@ -194,7 +211,27 @@
 													"nome": "public.jbpm_processinstance",
 													"pk": "id_",
 													"coluna": "id_",
-													"ignorar-campos":"roottoken_",
+													"ignorar-campos":"",
+													"coluna-dependente":"subprocessinstance_",
+													"dependencias": [],
+													"relacionadas":[]
+												}
+											],
+											"relacionadas": []
+										},
+										{
+											"nome": "public.jbpm_token",
+											"pk": "id_",
+											"coluna": "id_",
+											"coluna-dependente": "superprocesstoken_",
+											"ignorar-campos":"",
+											"recursivo-id":"",																
+											"dependencias": [
+												{
+													"nome": "public.jbpm_processinstance",
+													"pk": "id_",
+													"coluna": "id_",
+													"ignorar-campos":"",
 													"coluna-dependente":"subprocessinstance_",
 													"dependencias": [],
 													"relacionadas":[]
@@ -215,6 +252,13 @@
 													"coluna": "id_",
 													"coluna-dependente": "tokenvariablemap_",
 													"recursivo-destino":""											
+												},
+												{
+													"nome": "public.jbpm_bytearray",
+													"pk": "id_",
+													"coluna": "id_",
+													"coluna-dependente": "bytearrayvalue_",
+													"recursivo-destino":""		
 												},
 												{
 													"nome": "public.jbpm_taskinstance",
