@@ -144,9 +144,31 @@
 							"pk": "id_processo,id_proc_inst",
 							"coluna": "id_processo",
 							"coluna-dependente":"id_processo",							
-							"dependencias": [],
+							"dependencias": [
+								{
+									"nome": "core.tb_localizacao",
+									"coluna": "id_localizacao",
+									"pk": "id_localizacao",
+									"coluna-dependente":"id_localizacao",
+									"ignorar-campos":"",
+									"dependencias": [
+										{
+											"nome": "core.tb_endereco",					
+											"coluna": "id_endereco",
+											"pk": "id_endereco",
+											"coluna-dependente":"id_endereco",
+											"ignorar-campos":"",
+										}
+				
+									]
+								}	
+
+
+							],
 							"relacionadas": 
 							[
+
+
 								{
 									"nome": "public.jbpm_processinstance",
 									"pk": "id_",
@@ -327,7 +349,7 @@
 									"relacionadas":[]
 								}
 							]
-						},
+						}
 					]
                 },
 				{
@@ -344,8 +366,29 @@
 							"coluna-dependente":"id_endereco",
 							"ignorar-campos":"",
 						}
+
 					]
-				},						
+				},
+
+				
+				{
+					"nome": "client.tb_orgao_julgador_cargo",
+					"coluna": "id_orgao_julgador_cargo",
+					"coluna-dependente":"id_orgao_julgador_cargo",
+					"pk": "id_orgao_julgador_cargo",
+					"dependencias": [
+						{
+							"nome": "client.tb_orgao_julgador",
+							"coluna": "id_orgao_julgador",
+							"coluna-dependente":"id_orgao_julgador",
+							"pk": "id_orgao_julgador",
+							"ignorar-campos": "ds_orgao_julgador",
+							"dependencias": []
+						},
+					]
+				},
+
+
             ],
             "relacionadas": 
 			[
@@ -373,8 +416,16 @@
 				{
 					"nome": "core.tb_processo_evento",
 					"coluna": "id_processo",
-					"coluna-dependente":"id_processo_trf",
-					"pk": "id_processo_evento"
+					"coluna-dependente":"id_processo_evento",
+					"pk": "id_processo_evento",
+					"dependencias" : [
+						{
+							"nome": "core.tb_processo_documento",
+							"coluna": "id_processo_documento",
+							"coluna-dependente":"id_processo_evento",
+							"pk": "id_processo_documento"
+						}
+					]
 				},
 
 
@@ -432,11 +483,7 @@
 							"coluna": "id",
 							"coluna-dependente":"id_pessoa",
 							"pk": "id"
-						},
-
-
-
-
+						}
 					],
 					"relacionadas" : [
 						{
@@ -522,10 +569,10 @@
                                     "coluna": "id",
                                     "coluna-dependente":"id_pessoa",
                                     "pk": "id"
-                                },
+                                }
         
 							]
-						},
+						}
 
 					]
 				},
@@ -535,20 +582,94 @@
 					"coluna-dependente":"id_processo_trf",
 					"pk": "id_processo_documento",
 					"dependencias": 
-					[						
+					[			
+						
+						{
+							"nome": "core.tb_localizacao",					
+							"coluna": "id_localizacao",
+							"pk": "id_localizacao",
+							"coluna-dependente":"id_localizacao",
+							"ignorar-campos":"",
+							"dependencias": [
+								{
+									"nome": "core.tb_endereco",					
+									"coluna": "id_endereco",
+									"pk": "id_endereco",
+									"coluna-dependente":"id_endereco",
+									"ignorar-campos":"",
+									"dependencias": [
+										{
+											"nome": "core.tb_usuario",
+											"coluna": "id_usuario",
+											"coluna-dependente":"id_usuario",
+											"pk": "id_usuario",
+											"dependencias" : [
+												{
+													"nome": "acl.tb_usuario_login",
+													"coluna": "id_usuario",
+													"coluna-dependente":"id_usuario",
+													"pk": "id_usuario"
+												},
+											]
+										},
+									]
+
+								}
+							]
+						},
 						{
 							"nome": "core.tb_processo_documento_bin",
 							"pk": "id_processo_documento_bin",
 							"coluna": "id_processo_documento_bin",
 							"coluna-dependente": "id_processo_documento_bin",
-							"dependencias": [],
+							"dependencias": [
+								{
+									"nome": "core.tb_usuario",
+									"coluna": "id_usuario",
+									"coluna-dependente":"id_usuario",
+									"pk": "id_usuario",
+									"dependencias" : [
+										{
+											"nome": "acl.tb_usuario_login",
+											"coluna": "id_usuario",
+											"coluna-dependente":"id_usuario",
+											"pk": "id_usuario"
+										},
+									]
+								},
+
+
+							],
 							"relacionadas": 
 							[
 								{
 									"nome": "client.tb_proc_doc_bin_pess_assin",
 									"pk": "id_processo_doc_bin_pessoa",
 									"coluna": "id_processo_documento_bin",
-									"ignorar-campos":""
+									"ignorar-campos":"",
+									"dependencias": [
+
+										{
+											"nome": "acl.tb_usuario_login",
+											"coluna": "id_usuario",
+											"coluna-dependente":"id_pessoa",
+											"pk": "id_usuario"
+										},
+				
+										{
+											"nome": "core.tb_usuario",
+											"coluna": "id_usuario",
+											"coluna-dependente":"id_pessoa",
+											"pk": "id_usuario"
+										},
+
+										{
+											"nome": "client.tb_pessoa",
+											"coluna": "id_pessoa",
+											"coluna-dependente":"id_pessoa",
+											"pk": "id_pessoa"
+										}
+									]
 								}
 							]
 						},
@@ -571,8 +692,27 @@
 											"ignorar-campos":"",
 										}
 									]
-								}	
+									
+								},
+
+								{
+									"nome": "core.tb_localizacao",					
+									"coluna": "id_localizacao",
+									"pk": "id_localizacao",
+									"coluna-dependente":"id_localizacao",
+									"ignorar-campos":"",
+									"dependencias": [
+										{
+											"nome": "core.tb_endereco",					
+											"coluna": "id_endereco",
+											"pk": "id_endereco",
+											"coluna-dependente":"id_endereco",
+											"ignorar-campos":"",
+										}
+									]
+								}
 							]
+							
 						}
 					],
 					"relacionadas": []
